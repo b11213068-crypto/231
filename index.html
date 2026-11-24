@@ -72,7 +72,7 @@
         <h3>核心程式碼</h3>
         <pre><code>from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-img = Image.open("landscape.jpg").resize((800, 600))
+img = Image.open("bird.jpg").resize((800, 600))
 img = img.filter(ImageFilter.BLUR).filter(ImageFilter.SHARPEN)
 
 draw = ImageDraw.Draw(img)
@@ -86,7 +86,7 @@ img.convert("RGB").save("bird.jpg")</code></pre>
     <div class="card">
         <h2>作品二：結合 QR Code 的主題圖片介紹</h2>
         <p>結合 <code>qrcode</code> 與 <code>Pillow</code> 套件，將介紹網頁的網址轉換成 QR Code，調整大小後使用 <code>paste()</code> 合成至主圖片左上角。</p>
-        <img src="intro_qrcode.jpg" alt="QR Code 圖片介紹作品" class="work-img">
+        <img src="https://en.pimg.jp/035/490/589/1/35490589.jpg" alt="QR Code 圖片介紹作品" class="work-img">
         <h3>核心程式碼</h3>
         <pre><code>import qrcode
 from PIL import Image
