@@ -68,7 +68,7 @@
     <div class="card">
         <h2>作品一：風景明信片加工 (Pillow)</h2>
         <p>使用 Python 的 <code>PIL</code> 套件讀取風景照，將尺寸調整為 800x600，套用模糊與銳化濾鏡後，在圖片下方加上自訂字型與顏色的祝福文字。</p>
-        <img src="postcard.jpg" alt="bird" class="work-img">
+        <img src="bird.jpg" alt="bird" class="work-img">
         <h3>核心程式碼</h3>
         <pre><code>from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
@@ -91,7 +91,7 @@ img.convert("RGB").save("bird.jpg")</code></pre>
         <pre><code>import qrcode
 from PIL import Image
 
-bg_img = Image.open("photo.jpg").convert("RGB")
+bg_img = Image.open("https://en.pimg.jp/035/490/589/1/35490589.jpg").convert("RGB")
 qr_img = qrcode.make("https://en.pimg.jp/035/490/589/1/35490589.jpg").convert("RGB").resize((100, 100))
 
 bg_img.paste(qr_img, (20, 10))
