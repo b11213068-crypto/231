@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python 影像處理作品集</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: #2c3e50;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .card h2 {
+            color: #2980b9;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .work-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 15px auto;
+            border: 1px solid #ddd;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #dcdcdc;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Python 影像處理練習作品集</h1>
+        <p>使用 Pillow 與 qrcode 套件實作 | 作者：你的名字</p>
+    </header>
+
+    <!-- 作品一：明信片製作 -->
+    <div class="card">
+        <h2>作品一：風景明信片加工 (Pillow)</h2>
+        <p>使用 Python 的 <code>PIL</code> 套件讀取風景照，將尺寸調整為 800x600，套用模糊與銳化濾鏡後，在圖片下方加上自訂字型與顏色的祝福文字。</p>
+        <img src="postcard.jpg" alt="bird" class="work-img">
+        <h3>核心程式碼</h3>
+        <pre><code>from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+img = Image.open("landscape.jpg").resize((800, 600))
+img = img.filter(ImageFilter.BLUR).filter(ImageFilter.SHARPEN)
+
+draw = ImageDraw.Draw(img)
+font = ImageFont.truetype("arial.ttf", 36)
+draw.text((40, 530), "Welcome to Taoyuan!", fill=(230, 85, 25), font=font)
+
+img.convert("RGB").save("bird.jpg")</code></pre>
+    </div>
+
+    <!-- 作品二：QR Code 圖片介紹 -->
+    <div class="card">
+        <h2>作品二：結合 QR Code 的主題圖片介紹</h2>
+        <p>結合 <code>qrcode</code> 與 <code>Pillow</code> 套件，將介紹網頁的網址轉換成 QR Code，調整大小後使用 <code>paste()</code> 合成至主圖片左上角。</p>
+        <img src="intro_qrcode.jpg" alt="QR Code 圖片介紹作品" class="work-img">
+        <h3>核心程式碼</h3>
+        <pre><code>import qrcode
+from PIL import Image
+
+bg_img = Image.open("photo.jpg").convert("RGB")
+qr_img = qrcode.make("https://en.pimg.jp/035/490/589/1/35490589.jpg").convert("RGB").resize((100, 100))
+
+bg_img.paste(qr_img, (20, 10))
+bg_img.save("intro_qrcode.jpg")</code></pre>
+    </div>
+</div>
+
+</body>
+</html>
